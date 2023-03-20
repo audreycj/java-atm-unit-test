@@ -1,5 +1,5 @@
 
-# Console-Based ATM with Java
+# Command-line Interface-Based ATM with Java
 
 The simple ATM written in Java is a software application that simulates the functionality of an ATM machine. The application allows users to withdraw, deposit, and view their account balance. It also allows user validation through ATM number and PIN input.
 
