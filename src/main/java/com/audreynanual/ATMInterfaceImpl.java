@@ -1,12 +1,13 @@
 package com.audreynanual;
-
+import java.util.HashMap;
 
 public class ATMInterfaceImpl implements ATMInterface{
 
     // instance of ATM class
     ATM atm = new ATM();
 
-
+    // HashMap for account statement
+    HashMap<Double, String> statement = new HashMap<>();
 
     @Override
     public void viewBalance() {
