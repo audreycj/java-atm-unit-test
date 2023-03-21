@@ -4,7 +4,7 @@ package com.audreynanual;
 public class ATM {
 
     // instance variables
-    private double balance = 0;
+    private double balance;
     private double amountToDeposit;
     private double amountToWithdraw;
 
