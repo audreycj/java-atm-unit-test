@@ -31,7 +31,27 @@ public class App
             System.out.println("4. View account statement");
             System.out.println("5. Exit");
 
-            // 
+            // asking user input for ATM service choice
+            System.out.print("What do you want to do? ");
+            int inputChoice = userInput.nextInt();
+
+            switch(inputChoice) {
+                case 1: // View available balance
+
+                    break;
+                case 2: // Withdraw amount
+
+                    break;
+                case 3: // Deposit amount
+
+                    break;
+                case 4: // View account statement
+
+                    break;
+                case 5: // Exit
+                
+                    break;
+            } 
 
         } else {
             System.out.println("\nInvalid ATM account or PIN.\n");
