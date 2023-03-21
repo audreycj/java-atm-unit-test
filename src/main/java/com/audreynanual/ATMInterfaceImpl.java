@@ -1,9 +1,12 @@
 package com.audreynanual;
 
+
 public class ATMInterfaceImpl implements ATMInterface{
 
     // instance of ATM class
     ATM atm = new ATM();
+
+
 
     @Override
     public void viewBalance() {
@@ -12,16 +15,26 @@ public class ATMInterfaceImpl implements ATMInterface{
 
     @Override
     public void withdrawAmount(double amountToWithdraw) {
-        atm.setBalance(atm.getBalance() - amountToWithdraw);
-        System.out.println("PHP " + amountToWithdraw + "withrawn successfully.");
-        viewBalance();
+        if (amountToWithdraw > atm.getBalance()) {
+            System.out.println("\nInsufficient balance.\n");
+        } else if (amountToWithdraw == 0) {
+            System.out.println("\nInvalid value.\n");
+        } else {
+            atm.setBalance(atm.getBalance() - amountToWithdraw);
+            System.out.println("PHP " + amountToWithdraw + " withrawn successfully.\n");
+            viewBalance();
+        }
     }
 
     @Override
     public void depositAmount(double amountToDeposit) {
-        atm.setBalance(atm.getBalance() + amountToDeposit);
-        System.out.println("PHP " + amountToDeposit + " deposited successfully.\n");
-        viewBalance();
+        if (amountToDeposit < 1) {
+            System.out.println("\nInvalid value.\n");
+        } else {
+            atm.setBalance(atm.getBalance() + amountToDeposit);
+            System.out.println("PHP " + amountToDeposit + " deposited successfully.\n");
+            viewBalance();
+        }
     }
 
     @Override
