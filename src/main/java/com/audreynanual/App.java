@@ -6,10 +6,10 @@ public class App
     public static void main( String[] args )
     {
         // creating an instance of atmInterface
-        ATMInterface atm = new ATMInterfaceImplementation();
+        ATMInterface atmInterface = new ATMInterfaceImpl();
 
         // correct ATM account and PIN values
-        int atmAccount = 12345;
+        int atmAccount = 123;
         int atmPIN = 123;
 
         // welcome message
@@ -25,40 +25,57 @@ public class App
 
         // validating user number and PIN
         if ((atmAccount == inputAccount) && (atmPIN == inputPIN)) {
+            
+            // validation success message
             System.out.println("\nValidation successful.\n");
 
-            // displaying the ATM menu of services
-            System.out.println("1. View available balance");
-            System.out.println("2. Withdraw amount");
-            System.out.println("3. Deposit amount");
-            System.out.println("4. View account statement");
-            System.out.println("5. Exit");
+            while(true) {
 
-            // asking user input for ATM service choice
-            System.out.print("What do you want to do? ");
-            int inputChoice = userInput.nextInt();
+                // displaying the ATM menu of services
+                System.out.println("===========================");
+                System.out.println("1. View available balance");
+                System.out.println("2. Withdraw amount");
+                System.out.println("3. Deposit amount");
+                System.out.println("4. View account statement");
+                System.out.println("5. Exit");
+                System.out.println("===========================");
 
-            switch(inputChoice) {
-                case 1: // View available balance
+                // asking user input for ATM service choice
+                System.out.print("\nWhat do you want to do? ");
+                int inputChoice = userInput.nextInt();
 
-                    break;
-                case 2: // Withdraw amount
+                switch(inputChoice) {
+                    case 1: // View available balance
+                    System.out.println("");
+                        atmInterface.viewBalance();
+                        break;
 
-                    break;
-                case 3: // Deposit amount
+                    case 2: // Withdraw amount 
+                        System.out.println("");
+                        System.out.print("Amount to withdraw: ");
+                        atmInterface.withdrawAmount(userInput.nextDouble());
+                        break;
 
-                    break;
-                case 4: // View account statement
+                    case 3: // Deposit amount
+                        System.out.println("");
+                        System.out.print("Amount to deposit: ");
+                        atmInterface.depositAmount(userInput.nextDouble());
+                        break;
 
-                    break;
-                case 5: // Exit
-                    System.out.println("Don't forget to collect your cash and ATM card.\nThank you!");
-                    System.exit(0);
-                default:
-                    System.out.println("Please enter a valid option.");
-                    break;
-            } 
-            
+                    case 4: // View account statement
+                        atmInterface.viewAccountStatement();
+                        break;
+
+                    case 5: // Exit
+                        System.out.println("\nDon't forget to collect your cash and ATM card.\nThank you!\n");
+                        System.exit(0);
+
+                    default:
+                        System.out.println("Please enter a valid option.");
+                        break;
+                } 
+
+            }
 
         } else {
             System.out.println("\nInvalid ATM account or PIN.\n");
