@@ -19,8 +19,11 @@ To install and run the application, the following tools must be installed first:
 - Any integrated development environment (IDE) that can run Java, such as [Visual Studio Code](https://code.visualstudio.com/Download)
 
 If you want to use VS Code as your IDE, you can [install the Coding Pack for Java](https://code.visualstudio.com/docs/java/java-tutorial), which includes VS Code, the Java Development Kit (JDK), and essential Java extensions.
+
+
 ## Acknowledgements
 
+ - [How to iterate over keys, values, and key/value mappings of a Java HashMap](https://www.programiz.com/java-programming/examples/iterate-over-hashmap)
  - [Easily create a README.md for your projects using readme.so](https://readme.so/editor)
  - [Getting Started with Java in VS Code](https://code.visualstudio.com/docs/java/java-tutorial)
  - [ATM project reference](https://github.com/sjprogramming/ATM-Machine-Project-Java)
