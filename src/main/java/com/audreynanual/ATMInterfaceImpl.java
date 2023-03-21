@@ -12,13 +12,15 @@ public class ATMInterfaceImpl implements ATMInterface{
 
     @Override
     public void withdrawAmount(double amountToWithdraw) {
-        System.out.println("");
+        atm.setBalance(atm.getBalance() - amountToWithdraw);
+        System.out.println("PHP " + amountToWithdraw + "withrawn successfully.");
+        viewBalance();
     }
 
     @Override
     public void depositAmount(double amountToDeposit) {
-        System.out.println("PHP " + amountToDeposit + " deposited successfully.\n");
         atm.setBalance(atm.getBalance() + amountToDeposit);
+        System.out.println("PHP " + amountToDeposit + " deposited successfully.\n");
         viewBalance();
     }
 
