@@ -5,6 +5,9 @@ public class App
 {
     public static void main( String[] args )
     {
+        // creating an instance of atmInterface
+        ATMInterface atm = new ATMInterfaceImplementation();
+
         // correct ATM account and PIN values
         int atmAccount = 12345;
         int atmPIN = 123;
