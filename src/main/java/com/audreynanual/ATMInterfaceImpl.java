@@ -21,7 +21,7 @@ public class ATMInterfaceImpl implements ATMInterface{
     public void withdrawAmount(double amountToWithdraw) {
 
         // amount to be withdrawn must be divisible by at least 20 (since 20 is the smallest Philippine bill)
-        if (amountToWithdraw % 20 == 0) {
+        if (amountToWithdraw % 50 == 0 || amountToWithdraw % 20 == 0) {
             // if the inputted amount is 0 or lesser than the account's current balance, the withdraw operation is denied
             if (amountToWithdraw > atm.getBalance()) {
                 System.out.println("\nInsufficient balance.\n");
@@ -32,7 +32,7 @@ public class ATMInterfaceImpl implements ATMInterface{
             } else {
                 accountStatement.put(amountToWithdraw, " withdrawn."); // add this statement to transaction history
                 atm.setBalance(atm.getBalance() - amountToWithdraw); // subtract inputted amount from current balance
-                System.out.println("\nPHP " + amountToWithdraw + " withrawn successfully.\n");
+                System.out.println("\n" + Utilities.moneyFormat(amountToWithdraw) + " withrawn successfully.\nCollect your cash.\n");
                 viewBalance();
             }
         } else {
@@ -50,7 +50,7 @@ public class ATMInterfaceImpl implements ATMInterface{
         } else {
             accountStatement.put(amountToDeposit, " deposited."); // add this statement to transaction history
             atm.setBalance(atm.getBalance() + amountToDeposit); // add inputted amount to current balance
-            System.out.println("\nPHP " + amountToDeposit + " deposited successfully.\n");
+            System.out.println("\n" + Utilities.moneyFormat(amountToDeposit) + " deposited successfully.\n");
             viewBalance();
         }
     }
@@ -59,11 +59,11 @@ public class ATMInterfaceImpl implements ATMInterface{
     @Override
     public void viewAccountStatement() {
 
-        System.out.println("");
+        System.out.println("\nAccount Statement:");
 
         // iterating through the key/value mappings stored in the 'statement' HashMap
         for(Map.Entry<Double, String> statement:accountStatement.entrySet()) {
-            System.out.println(statement.getKey() + statement.getValue());
+            System.out.println(Utilities.moneyFormat(statement.getKey()) + statement.getValue());
         }
 
         System.out.println("");
