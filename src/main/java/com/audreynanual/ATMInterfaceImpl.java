@@ -7,13 +7,13 @@ public class ATMInterfaceImpl implements ATMInterface{
     // instance of ATM class
     ATM atm = new ATM();
 
-    // HashMap for account statement
+    // HashMap instance for storing transactions
     HashMap<Double, String> accountStatement = new HashMap<>();
 
     // viewBalance() function - displays the current amount of funds in the ATM account
     @Override
     public void viewBalance() {
-        System.out.print("Available balance: PHP " + atm.getBalance() + "\n\n");
+        System.out.print("Available balance: " + Utilities.moneyFormat(atm.getBalance()) + "\n\n");
     }
 
     // withdrawAmount() function - withdraws the amount inputted by the user from the account's current balance
@@ -59,11 +59,14 @@ public class ATMInterfaceImpl implements ATMInterface{
     @Override
     public void viewAccountStatement() {
 
+        System.out.println("");
+
         // iterating through the key/value mappings stored in the 'statement' HashMap
         for(Map.Entry<Double, String> statement:accountStatement.entrySet()) {
-            System.out.println("");
             System.out.println(statement.getKey() + statement.getValue());
         }
+
+        System.out.println("");
         
     }
 }
