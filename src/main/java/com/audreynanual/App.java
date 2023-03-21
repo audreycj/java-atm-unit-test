@@ -58,10 +58,12 @@ public class App
                     System.out.println("Please enter a valid option.");
                     break;
             } 
+            
 
         } else {
             System.out.println("\nInvalid ATM account or PIN.\n");
             System.exit(0);
         }
+        userInput.close();
     }
 }
