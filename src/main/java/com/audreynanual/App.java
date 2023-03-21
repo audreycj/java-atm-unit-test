@@ -67,7 +67,7 @@ public class App {
                         break;
 
                     case 5: // Exit
-                        System.out.println("\nDon't forget to collect your cash and ATM card. Thank you!\n");
+                        System.out.println("\nDon't forget to collect your ATM card. Thank you!\n");
                         System.exit(0);
 
                     default:
