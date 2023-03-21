@@ -1,6 +1,5 @@
 package com.audreynanual;
 
-
 public class ATM {
 
     // instance variables
