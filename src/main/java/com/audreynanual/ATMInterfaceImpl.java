@@ -1,5 +1,6 @@
 package com.audreynanual;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ATMInterfaceImpl implements ATMInterface{
 
@@ -7,7 +8,7 @@ public class ATMInterfaceImpl implements ATMInterface{
     ATM atm = new ATM();
 
     // HashMap for account statement
-    HashMap<Double, String> statement = new HashMap<>();
+    HashMap<Double, String> accountStatement = new HashMap<>();
 
     // viewBalance() function - displays the current amount of funds in the ATM account
     @Override
@@ -19,7 +20,7 @@ public class ATMInterfaceImpl implements ATMInterface{
     @Override
     public void withdrawAmount(double amountToWithdraw) {
 
-        // amount to be withdrawn must be divisble by at least 20 (since 20 is the smallest Philippine bill)
+        // amount to be withdrawn must be divisible by at least 20 (since 20 is the smallest Philippine bill)
         if (amountToWithdraw % 20 == 0) {
             // if the inputted amount is 0 or lesser than the account's current balance, the withdraw operation is denied
             if (amountToWithdraw > atm.getBalance()) {
@@ -29,8 +30,9 @@ public class ATMInterfaceImpl implements ATMInterface{
                 System.out.println("\nInvalid value.\n");
 
             } else {
-                atm.setBalance(atm.getBalance() - amountToWithdraw);
-                System.out.println("PHP " + amountToWithdraw + " withrawn successfully.\n");
+                accountStatement.put(amountToWithdraw, " withdrawn."); // add this statement to transaction history
+                atm.setBalance(atm.getBalance() - amountToWithdraw); // subtract inputted amount from current balance
+                System.out.println("\nPHP " + amountToWithdraw + " withrawn successfully.\n");
                 viewBalance();
             }
         } else {
@@ -46,8 +48,9 @@ public class ATMInterfaceImpl implements ATMInterface{
         if (amountToDeposit < 1) {
             System.out.println("\nInvalid value.\n");
         } else {
-            atm.setBalance(atm.getBalance() + amountToDeposit);
-            System.out.println("PHP " + amountToDeposit + " deposited successfully.\n");
+            accountStatement.put(amountToDeposit, " deposited."); // add this statement to transaction history
+            atm.setBalance(atm.getBalance() + amountToDeposit); // add inputted amount to current balance
+            System.out.println("\nPHP " + amountToDeposit + " deposited successfully.\n");
             viewBalance();
         }
     }
@@ -55,10 +58,12 @@ public class ATMInterfaceImpl implements ATMInterface{
     // viewAccountStatement() function - displays the account's transaction history
     @Override
     public void viewAccountStatement() {
+
         // iterating through the key/value mappings stored in the 'statement' HashMap
-        // for(Entry<Double, String> s:statement.entrySet()) {
-        //     d
-        // }
+        for(Map.Entry<Double, String> statement:accountStatement.entrySet()) {
+            System.out.println("");
+            System.out.println(statement.getKey() + statement.getValue());
+        }
         
     }
 }
