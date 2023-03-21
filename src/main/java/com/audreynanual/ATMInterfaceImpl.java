@@ -19,17 +19,22 @@ public class ATMInterfaceImpl implements ATMInterface{
     @Override
     public void withdrawAmount(double amountToWithdraw) {
 
-        // if the inputted amount is 0 or lesser than the account's current balance, the withdraw operation is denied
-        if (amountToWithdraw > atm.getBalance()) {
-            System.out.println("\nInsufficient balance.\n");
-        
-        } else if (amountToWithdraw == 0) {
-            System.out.println("\nInvalid value.\n");
+        // amount to be withdrawn must be divisble by at least 20 (since 20 is the smallest Philippine bill)
+        if (amountToWithdraw % 20 == 0) {
+            // if the inputted amount is 0 or lesser than the account's current balance, the withdraw operation is denied
+            if (amountToWithdraw > atm.getBalance()) {
+                System.out.println("\nInsufficient balance.\n");
+            
+            } else if (amountToWithdraw == 0) {
+                System.out.println("\nInvalid value.\n");
 
+            } else {
+                atm.setBalance(atm.getBalance() - amountToWithdraw);
+                System.out.println("PHP " + amountToWithdraw + " withrawn successfully.\n");
+                viewBalance();
+            }
         } else {
-            atm.setBalance(atm.getBalance() - amountToWithdraw);
-            System.out.println("PHP " + amountToWithdraw + " withrawn successfully.\n");
-            viewBalance();
+            System.out.println("\nThe ATM can only give out banknotes.\n");
         }
     }
 
@@ -47,10 +52,13 @@ public class ATMInterfaceImpl implements ATMInterface{
         }
     }
 
-    // viewAccountStatement() function - displays
+    // viewAccountStatement() function - displays the account's transaction history
     @Override
     public void viewAccountStatement() {
-        
+        // iterating through the key/value mappings stored in the 'statement' HashMap
+        // for(Entry<Double, String> s:statement.entrySet()) {
+        //     d
+        // }
         
     }
 }
