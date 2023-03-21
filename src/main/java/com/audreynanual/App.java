@@ -49,7 +49,10 @@ public class App
 
                     break;
                 case 5: // Exit
-                
+                    System.out.println("Don't forget to collect your cash and ATM card.\nThank you!");
+                    System.exit(0);
+                default:
+                    System.out.println("Please enter a valid option.");
                     break;
             } 
 
