@@ -37,9 +37,4 @@ public class ATM {
     public void setAmountToWithdraw(double amountToWithdraw) {
         this.amountToWithdraw = amountToWithdraw;
     }
-
-    // getter and setter methods
-    
-
-
 }
