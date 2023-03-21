@@ -1,10 +1,11 @@
 package com.audreynanual;
 import java.util.Scanner;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
+
+public class App {
+
+    public static void main( String[] args ) {
+
         // creating an instance of atmInterface
         ATMInterface atmInterface = new ATMInterfaceImpl();
 
